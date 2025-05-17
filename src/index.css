@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-alexis-blue-50: #e5d7e2;
+  --color-alexis-blue-100: #d9c1da;
+  --color-alexis-blue-200: #ae99c3;
+  --color-alexis-blue-300: #7c77ac;
+  --color-alexis-blue-400: #596796;
+  --color-alexis-blue-500: #405d80;
+  --color-alexis-blue-600: #2c4f6b;
+  --color-alexis-blue-700: #1c3d56;
+  --color-alexis-blue-800: #102942;
+  --color-alexis-blue-900: #07152f;
+
+  --color-xereus-purple-50: #e5ccc6;
+  --color-xereus-purple-100: #d9a4a1;
+  --color-xereus-purple-200: #c26173;
+  --color-xereus-purple-300: #aa3263;
+  --color-xereus-purple-400: #941262;
+  --color-xereus-purple-500: #7e0064;
+  --color-xereus-purple-600: #690063;
+  --color-xereus-purple-700: #4f0055;
+  --color-xereus-purple-800: #360041;
+  --color-xereus-purple-900: #22002e;
+
+  --color-atlantic-wave-50: #e5d7e5;
+  --color-atlantic-wave-100: #d1c1d9;
+  --color-atlantic-wave-200: #9d98c2;
+  --color-atlantic-wave-300: #7588aa;
+  --color-atlantic-wave-400: #588394;
+  --color-atlantic-wave-500: #3f7b7e;
+  --color-atlantic-wave-600: #2b6966;
+  --color-atlantic-wave-700: #1b5554;
+  --color-atlantic-wave-800: #103c41;
+  --color-atlantic-wave-900: #07212e;
+
+  --color-oriental-nights-50: #e3d2d6;
+  --color-oriental-nights-100: #d4b8c3;
+  --color-oriental-nights-200: #b88aad;
+  --color-oriental-nights-300: #99649d;
+  --color-oriental-nights-400: #704684;
+  --color-oriental-nights-500: #4d2f6d;
+  --color-oriental-nights-600: #331f59;
+  --color-oriental-nights-700: #221347;
+  --color-oriental-nights-800: #160b38;
+  --color-oriental-nights-900: #0f0629;
+}
