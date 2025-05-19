@@ -1,6 +1,7 @@
 import { X } from "lucide-react";
 import { useChatStore } from "../store";
 import clsx from "clsx";
+import { ConversationsList } from "./ConversationsList";
 
 export function SlideOverPanel({
   open,
@@ -9,7 +10,7 @@ export function SlideOverPanel({
   open: boolean;
   toggleSlideOverPanelOpen: () => void;
 }) {
-  const { setCurrentConversation, conversations } = useChatStore();
+  const { setCurrentConversation } = useChatStore();
 
   const handleClick = (conv: string) => {
     setCurrentConversation(conv);
@@ -17,33 +18,21 @@ export function SlideOverPanel({
   };
 
   return (
-    <>
-      {/* // This component is a slide-over panel that displays a list of conversations
-      // and this will be a side bar in 768px and above
-      // and a full screen modal in 768px and below */}
-      <div
-        className={clsx(
-          "lg:hidden md:w-3/6 transition duration-150 ease-in-out fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 text-white",
-          !open ? "translate-x-[calc(-100vw)]" : "translate-x-0"
-        )}
-      >
-        <div className="relative flex flex-col w-full  h-full p-8">
-          <button
-            className="absolute top-6 right-6 text-oriental-nights-100 z-20"
-            onClick={() => toggleSlideOverPanelOpen()}
-          >
-            <X className="w-8 h-8 " />
-          </button>
-          <h2 className="text-xl font-semibold">Conversations</h2>
-          <ul>
-            {Object.keys(conversations).map((conv) => (
-              <li className="mb-3" key={conv}>
-                <button onClick={() => handleClick(conv)}>{conv}</button>
-              </li>
-            ))}
-          </ul>
-        </div>
+    <div
+      className={clsx(
+        "lg:hidden md:w-2/5 transition duration-150 ease-in-out fixed inset-0 flex items-center justify-center bg-white z-10 shadow-lg",
+        !open ? "translate-x-[calc(-100vw)]" : "translate-x-0"
+      )}
+    >
+      <div className="relative flex flex-col w-full  h-full p-8">
+        <button
+          className="absolute top-6 right-6 z-20"
+          onClick={() => toggleSlideOverPanelOpen()}
+        >
+          <X className="w-8 h-8" />
+        </button>
+        <ConversationsList handleClick={handleClick} />
       </div>
-    </>
+    </div>
   );
 }

@@ -3,14 +3,14 @@ import type { Message } from "./hooks/useLlmEngine";
 import type { InitProgressReport } from "@mlc-ai/web-llm";
 import { persist } from "zustand/middleware";
 
-interface Conversation {
+export interface Conversation {
   [key: string]: Message[];
 }
 
 interface ChatStoreType {
   updateConversationId: (oldId: string, newId: string) => void;
-  currentConversation: string;
-  setCurrentConversation: (currentConversation: string) => void;
+  currentConversation: string | null;
+  setCurrentConversation: (currentConversation: string | null) => void;
   conversations: Conversation;
   setConversations: (conversations: Conversation) => void;
   inputs: Message[];
@@ -46,7 +46,7 @@ export const useChatStore = create<ChatStoreType>()(
           });
         }
       },
-      currentConversation: "",
+      currentConversation: null,
       createConversation: (msg: Message) => {
         const { conversations } = get();
         const newConversationId = Date.now().toString();
@@ -60,6 +60,10 @@ export const useChatStore = create<ChatStoreType>()(
         });
       },
       setCurrentConversation: (currentConversation) => {
+        if (currentConversation === null) {
+          set({ currentConversation: null, inputs: [SYS_MSG] });
+          return;
+        }
         // When switching conversation, update inputs to match the selected conversation
         const conversations = get().conversations;
         set({
@@ -75,6 +79,10 @@ export const useChatStore = create<ChatStoreType>()(
       inputs: [SYS_MSG],
       setInputs: (msg) => {
         const { currentConversation, conversations, inputs } = get();
+        if (!currentConversation) {
+          console.error("No current conversation set");
+          return;
+        }
         const updatedInputs = [...inputs, msg];
         set({
           inputs: updatedInputs,

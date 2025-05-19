@@ -1,23 +1,27 @@
+import clsx from "clsx";
 import { useChatStore } from "../store";
+import type React from "react";
+import { ConversationsList } from "./ConversationsList";
 
-export function Sidebar() {
-  const { setCurrentConversation, conversations } = useChatStore();
+export function Sidebar({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) {
+  const { setCurrentConversation } = useChatStore();
+
+  const handleClick = (conv: string) => {
+    setCurrentConversation(conv);
+  };
 
   return (
-    <div className="hidden lg:flex flex-col w-1/4 h-full bg-oriental-nights-100 text-alexis-blue-600 p-8">
-      <h2 className="text-xl font-semibold">Conversations</h2>
-      <ul className="overflow-y-auto h-full">
-        {Object.keys(conversations).map((conv) => (
-          <li className="mb-3" key={conv}>
-            <button
-              className="w-full text-left p-2 hover:bg-gray-100 rounded"
-              onClick={() => setCurrentConversation(conv)}
-            >
-              {conv}
-            </button>
-          </li>
-        ))}
-      </ul>
+    <div
+      className={clsx(
+        "hidden lg:flex flex-col basis-1/4 h-full p-8 shadow-lg",
+        className
+      )}
+      {...props}
+    >
+      <ConversationsList handleClick={handleClick} />
     </div>
   );
 }

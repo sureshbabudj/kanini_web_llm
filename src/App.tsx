@@ -23,9 +23,9 @@ function App() {
   const toggleSlideOverPanelOpen = () => setSlideOverPanelOpen((prev) => !prev);
 
   return (
-    <div className="flex flex-row h-screen basis-1/3">
+    <div className="flex flex-row h-screen text-gray-700">
       <Sidebar />
-      <div className="flex flex-col flex-1  bg-oriental-nights-600 bg-gradient-to-b from-oriental-nights-400 to-oriental-nights-700">
+      <div className="flex flex-col bg-gray-100 flex-1">
         <Header toggleSlideOverPanelOpen={toggleSlideOverPanelOpen} />
         <ChatWindow />
         <SlideOverPanel
