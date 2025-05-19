@@ -14,7 +14,7 @@ export const useInput = () => {
     setOutput,
   } = useChatStore();
 
-  const inputRef = useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLTextAreaElement>(null);
 
   const handleInput = async (value: string) => {
     if (!value) {

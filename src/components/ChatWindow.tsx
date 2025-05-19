@@ -7,8 +7,8 @@ export const ChatWindow: React.FC = () => {
   const { inputRef, handleInput } = useInput();
   const { loading } = useChatStore();
 
-  const handleEnter = async (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter" && inputRef.current) {
+  const handleEnter = async (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === "Enter" && inputRef.current && !e.shiftKey && !loading) {
       const value = inputRef.current.value.trim();
       handleInput(value);
     }
@@ -25,8 +25,9 @@ export const ChatWindow: React.FC = () => {
     <>
       <RenderMessages />
       <footer className="p-4 flex flex-row">
-        <input
-          type="text"
+        <textarea
+          rows={2}
+          cols={1}
           ref={inputRef}
           className="w-full p-2 border border-gray-100 bg-white rounded shadow focus:outline-none"
           onKeyDown={handleEnter}

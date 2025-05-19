@@ -47,7 +47,7 @@ export const MessageDisplay = ({ message }: { message: Message }) => {
       </div>
 
       <div className="flex-1">
-        <div dangerouslySetInnerHTML={{ __html: html }} />
+        <div className="prose" dangerouslySetInnerHTML={{ __html: html }} />
       </div>
     </div>
   );
